@@ -23,3 +23,31 @@ var goodPlayersWithClub = goodPlayers.map(player => {
 var goodPlayersWithoutSmallestId = goodPlayersDetails.filter(player => {
     return player.id !== '1';
 });
+
+
+const reviews = [4.5, 4.0, 5.0, 2.0, 1.0, 5.0, 3.0, 4.0, 1.0, 5.0, 4.5, 3.0, 2.5, 2.0];
+
+/**
+ * sum = Wert der Summe im aktuellen Element
+ * cur = aktuelle Wert des Arrays
+ * Der Gesamtwert wird durch die Division des Gesamtwertes durch die Anzahl der Elemente im Array ausgegeben.
+*/
+const avgReviews = reviews.reduce((sum, cur) => sum + cur) / reviews.length;
+console.log(avgReviews);
+
+const countReviews = reviews.reduce((sum, cur) => {
+    if (cur >= 4) {
+        sum.good++;
+    } else if (cur >= 2.5) {
+        sum.ok++;
+    } else {
+        sum.bad++;
+    }
+    return sum;
+}, {
+    good: 0,
+    ok: 0,
+    bad: 0
+});
+
+console.log(countReviews); // { good: 5, ok: 4, bad: 5 }
